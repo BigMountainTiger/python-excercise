@@ -2,6 +2,7 @@ workspace/
 
 .project
 .pydevproject
+.metadata/
 *.h5
 
 
