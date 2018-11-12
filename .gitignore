@@ -1,0 +1,8 @@
+workspace/
+
+.project
+.pydevproject
+*.h5
+
+
+
