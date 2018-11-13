@@ -62,7 +62,7 @@ model.compile(optimizer=tf.train.AdamOptimizer(),
               metrics=['accuracy'])
 
 
-model.fit(train_images, train_labels, epochs = 20, verbose = 0)
+model.fit(train_images, train_labels, epochs = 20, verbose = 1)
 
 test_loss, test_acc = model.evaluate(test_images, test_labels)
 
