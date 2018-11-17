@@ -4,6 +4,6 @@ workspace/
 .pydevproject
 .metadata/
 *.h5
-
+__pycache__/
 
 
