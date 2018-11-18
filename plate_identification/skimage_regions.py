@@ -8,7 +8,7 @@ from skimage.measure import label, regionprops
 from skimage.morphology import closing, square
 from skimage.color import rgb2gray
 
-image_path = "./images/xu.jpeg"
+image_path = "./images/car-3.jpeg"
 
 image = imread(image_path)
 g_image = rgb2gray(image)
@@ -25,7 +25,7 @@ ax.imshow(image)
 regions = regionprops(label_image)
 for region in regions:
 
-    if region.area >= 1500:
+    if region.area >= 1:
 
         minr, minc, maxr, maxc = region.bbox
         rect = mpatches.Rectangle((minc, minr),
