@@ -1,3 +1,4 @@
+import os
 import numpy as np
 
 import tensorflow as tf
@@ -39,7 +40,15 @@ model.summary()
 
 from tensorflow.keras.preprocessing import image
 
+def r2a_path(path):
+    dirname = os.path.dirname(__file__)
+    path = os.path.join(dirname, path)
+
+    return path
+
 def load_raw_image(path):
+    path = r2a_path(path)
+
     img = image.load_img(path, target_size=(224, 224))
     
     return img
@@ -55,25 +64,25 @@ def load_training_data():
     train_labels = [0, 0, 0, 0, 0, 1, 2, 3, 3, 4, 4, 5, 6, 6]
     class_names = ["许勇", "陈景富", "李教授", "老袁", "机器人", "菠萝蜜", "陈庆波"]
         
-    train_images.append(load_training_image("./images/xu.jpeg"))
-    train_images.append(load_training_image("./images/xu-1.jpeg"))
-    train_images.append(load_training_image("./images/xu-2.jpeg"))
-    train_images.append(load_training_image("./images/xu-3.jpeg"))
-    train_images.append(load_training_image("./images/xu-4.jpeg"))
+    train_images.append(load_training_image("images/xu.jpeg"))
+    train_images.append(load_training_image("images/xu-1.jpeg"))
+    train_images.append(load_training_image("images/xu-2.jpeg"))
+    train_images.append(load_training_image("images/xu-3.jpeg"))
+    train_images.append(load_training_image("images/xu-4.jpeg"))
     
-    train_images.append(load_training_image("./images/chen.jpg"))
-    train_images.append(load_training_image("./images/li.jpeg"))
+    train_images.append(load_training_image("images/chen.jpg"))
+    train_images.append(load_training_image("images/li.jpeg"))
     
-    train_images.append(load_training_image("./images/yuan.jpeg"))
-    train_images.append(load_training_image("./images/yuan-1.jpeg"))
+    train_images.append(load_training_image("images/yuan.jpeg"))
+    train_images.append(load_training_image("images/yuan-1.jpeg"))
     
-    train_images.append(load_training_image("./images/toy.jpeg"))
-    train_images.append(load_training_image("./images/toy-1.jpeg"))
+    train_images.append(load_training_image("images/toy.jpeg"))
+    train_images.append(load_training_image("images/toy-1.jpeg"))
     
-    train_images.append(load_training_image("./images/jackfruit.jpg"))
+    train_images.append(load_training_image("images/jackfruit.jpg"))
     
-    train_images.append(load_training_image("./images/cheng-qingbo.jpg"))
-    train_images.append(load_training_image("./images/cheng-qingbo-1.jpg"))
+    train_images.append(load_training_image("images/cheng-qingbo.jpg"))
+    train_images.append(load_training_image("images/cheng-qingbo-1.jpg"))
     
     return np.array(train_images), np.array(train_labels), np.array(class_names)
 
@@ -115,7 +124,7 @@ print("test_loss - " + str(test_loss))
 print("test_acc - " + str(test_acc))
 
 print("Start predicting")
-test_image = "./images/cheng-qingbo-1.jpg"
+test_image = r2a_path("images/toy.jpeg")
 predictions = model.predict(imageloader.load_training_image(test_image))
 
 def interprate(yhat):
